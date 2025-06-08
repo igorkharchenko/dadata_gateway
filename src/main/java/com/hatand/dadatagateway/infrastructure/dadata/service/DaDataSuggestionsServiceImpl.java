@@ -7,6 +7,7 @@ import com.hatand.dadatagateway.business.suggestaddress.dto.SuggestionResultDto;
 import com.hatand.dadatagateway.business.suggestaddress.storage.SuggestionService;
 import com.hatand.dadatagateway.crosscut.exception.ExternalServiceException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class DaDataSuggestionsServiceImpl implements SuggestionService {
@@ -47,6 +49,10 @@ public class DaDataSuggestionsServiceImpl implements SuggestionService {
 
     private String getDaDataResponse(String queryParam) {
         final MediaType JSON = MediaType.get("application/json");
+
+        // @todo удолить
+        log.info("DaData base url: {}", dadataBaseUrl);
+        log.info("DaData auth token: {}", dadataAuthToken);
 
         JSONObject jsonObject;
         try {
