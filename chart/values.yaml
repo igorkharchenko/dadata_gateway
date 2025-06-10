@@ -114,6 +114,5 @@ tolerations: []
 
 affinity: {}
 
-env:
-  DADATA_BASE_URL: ''
-  DADATA_AUTH_TOKEN: ''
+DADATA_BASE_URL: ''
+DADATA_AUTH_TOKEN: ''
