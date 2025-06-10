@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.*;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SuggestionDataDto {
+public class SuggestionDataDto implements Serializable {
     @JsonProperty("unrestricted_value")
     String unrestrictedValue;
     String region;

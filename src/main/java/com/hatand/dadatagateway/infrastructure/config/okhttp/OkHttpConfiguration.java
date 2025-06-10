@@ -1,11 +1,11 @@
-package com.hatand.dadatagateway.infrastructure.config;
+package com.hatand.dadatagateway.infrastructure.config.okhttp;
 
 import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class OkHttpConfig {
+public class OkHttpConfiguration {
     @Bean
     public OkHttpClient okHttpClient() {
         return new OkHttpClient();

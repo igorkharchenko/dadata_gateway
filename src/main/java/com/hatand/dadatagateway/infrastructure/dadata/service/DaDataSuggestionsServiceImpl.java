@@ -12,6 +12,7 @@ import okhttp3.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class DaDataSuggestionsServiceImpl implements SuggestionService {
     private final OkHttpClient client;
 
     @Override
+    @Cacheable("fetchDaDataSuggestions")
     public List<SuggestionDataDto> fetchSuggestions(String searchQuery) {
         String daDataAnswer = getDaDataResponse(searchQuery);
 
@@ -49,10 +51,6 @@ public class DaDataSuggestionsServiceImpl implements SuggestionService {
 
     private String getDaDataResponse(String queryParam) {
         final MediaType JSON = MediaType.get("application/json");
-
-        // @todo удолить
-        log.info("DaData base url: {}", dadataBaseUrl);
-        log.info("DaData auth token: {}", dadataAuthToken);
 
         JSONObject jsonObject;
         try {

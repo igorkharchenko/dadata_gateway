@@ -8,6 +8,7 @@ import com.hatand.dadatagateway.controller.suggestaddress.reqresp.AddressSuggest
 import com.hatand.dadatagateway.controller.suggestaddress.reqresp.AddressSuggestionResponse;
 import com.hatand.dadatagateway.framework.DaDataGatewayApplication;
 import jakarta.validation.ValidationException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -47,10 +48,16 @@ class SuggestAddressControllerTest {
     MockMvc mvc;
     @Autowired
     SuggestAddressController controller;
+    AutoCloseable mockito;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        mockito = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        mockito.close();
     }
 
     @ParameterizedTest
